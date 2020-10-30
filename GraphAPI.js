@@ -1,6 +1,7 @@
 class Graph{
-    constructor(data){
+    constructor(data,labels){
         this.data = data;
+        this.labels = labels;
         this.total = this.max(this.data);    
     }
    max(array){
@@ -14,7 +15,7 @@ class Graph{
     }
     getbargraph(width,height) {
     var j =0;
-    var table = '<table style="width:'+width+'px;height:'+height+'px;border:3px solid blue;" > <tr style="column-gap: 20px;">';
+    var table = '<table style="width:'+width+'px;height:'+height+'px;" > <tr style="column-gap: 20px;">';
        for (j=0;j<this.data.length;j++){
         
         var percent = (this.data[j]/this.total)*100;
@@ -25,7 +26,7 @@ class Graph{
         
         var table_cols = '<td style="vertical-align: bottom;">'+parseInt(percent)+'%'+
         '<div style="background-color:red;width:'+
-        bar_width+'px;height:'+bar_height+'px;"></div></td>'; 
+        bar_width+'px;height:'+bar_height+'px;"></div><p align="center">'+this.labels[j]+'</p></td>'; 
          table= table+table_cols;
    }
        table+='</tr></table>';
@@ -35,7 +36,7 @@ class Graph{
     getcolouredbargraph(width,height) {
         var colours =  ['#4A235A','#1B4F72','#641E16','#A04000','#BB8FCE','#F7DC6F','#04FC04'];
         var j =0;
-        var table = '<table style="width:'+width+'px;height:'+height+'px;border:3px solid blue;" > <tr style="column-gap: 20px;">';
+        var table = '<table style="width:'+width+'px;height:'+height+'px;" > <tr style="column-gap: 20px;">';
            for (j=0;j<this.data.length;j++){
             
             var percent = (this.data[j]/this.total)*100;
@@ -46,7 +47,7 @@ class Graph{
             
             var table_cols = '<td style="vertical-align: bottom;">'+parseInt(percent)+'%'+
             '<div style="background-color:'+colours[j]+';width:'+
-            bar_width+'px;height:'+bar_height+'px;"></div></td>'; 
+            bar_width+'px;height:'+bar_height+'px;"></div><p align="center">'+this.labels[j]+'</p></td>'; 
              table= table+table_cols;
        }
            table+='</tr></table>';
